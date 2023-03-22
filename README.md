@@ -29,8 +29,8 @@ Run the container using the command `invoke local` (or `invoke local --arm` for 
 Once the FastAPI application is up and running, you can send a firewall log message to the `/endpoint/` endpoint using a POST request. The request should contain the firewall log message in JSON format.
 
 ```http
-POST /pangpt/decryption/ HTTP/1.1
-Host: localhost:8000
+POST /endpoint/ HTTP/1.1
+Host: localhost:5000
 Content-Type: application/json
 
 {
