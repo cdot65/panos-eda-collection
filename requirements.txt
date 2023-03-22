@@ -1,0 +1,10 @@
+ansible
+ansible-rulebook
+ansible-runner
+azure-servicebus
+aiobotocore
+aiohttp
+aiokafka
+watchdog
+dpath
+aiobotocore

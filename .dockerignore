@@ -1,0 +1,13 @@
+# Ignore the things not needed within the container image build.
+CHANGELOG.md
+LICENSE
+poetry.lock
+pyproject.toml
+README.md
+tasks.py
+.dockerignore
+.git
+.gitignore
+.flake8
+.yamllint
+.env

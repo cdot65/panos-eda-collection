@@ -1,0 +1,33 @@
+---
+namespace: "cdot65"
+name: "panos_eda"
+version: "0.1.0"
+readme: "README.md"
+description: "Source plugin for PAN-OS firewalls"
+authors:
+  - "Calvin Remsburg <cremsburg.dev@gmail.com>"
+
+dependencies:
+tags:
+  - "ansible"
+  - "collection"
+  - "eda"
+  - "panos"
+  - "netsec"
+repository: "https://github.com/cdot65/panos-eda-collection"
+documentation: "https://github.com/cdot65/panos-eda-collection"
+homepage: "https://github.com/cdot65/panos-eda-collection"
+issues: "https://github.com/cdot65/panos-eda-collection/issues"
+build_ignore:
+  - "releases"
+  - "Makefile"
+  - "Dockerfile"
+  - "*tƒravis*"
+  - "*.sh"
+  - "*lint*"
+  - ".gitignore"
+  - "*.lock"
+  - "*.toml"
+  - "*.ini"
+  - ".vscode"
+  - ".env"

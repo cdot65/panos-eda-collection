@@ -1,0 +1,4 @@
+---
+collections:
+  - name: "ansible.eda"
+  - name: "cdot65.panos_eda"

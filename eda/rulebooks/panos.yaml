@@ -1,0 +1,21 @@
+---
+- name: "Watch for new changelog entries"
+  hosts: "localhost"
+
+  ## Define how our plugin should listen for logs from the PAN-OS firewall
+
+  sources:
+    - cdot65.panos_eda.logs:
+        host: 0.0.0.0
+        port: 5000
+
+  ## Define the conditions we are looking for
+
+  rules:
+    - name: "New changelog created"
+      condition: "event.payload is defined"
+
+      ## Define the action we should take should the condition be met
+
+      action:
+        debug:
