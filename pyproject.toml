@@ -10,6 +10,7 @@ packages = [{include = "cdot65_panos_eda_collection"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 ansible = "^7.3.0"
+dpath = "^2.1.4"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^6.0.0"

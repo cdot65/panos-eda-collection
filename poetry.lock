@@ -299,6 +299,18 @@ files = [
 ]
 
 [[package]]
+name = "dpath"
+version = "2.1.4"
+description = "Filesystem-like pathing and searching for dictionaries"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "dpath-2.1.4-py3-none-any.whl", hash = "sha256:3a4f6cc07e3a1b34bc73baa3a6854ee0a48fb2cf18a8c9b1911b66fd72afaa85"},
+    {file = "dpath-2.1.4.tar.gz", hash = "sha256:3380a77d0db4abf104125860ff6eb4bd07c97c65b81aad42a609717089a1bed0"},
+]
+
+[[package]]
 name = "executing"
 version = "1.2.0"
 description = "Get the currently executing AST node of a frame, and other information"
@@ -841,4 +853,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "86d1dbe71f433d454eaa85fac45993205fb16bfc0c90c20daa9286e74e99b36b"
+content-hash = "a1056eb106a38b2a942e75143cb4cf325ac2a18d9ff4a57fb5a9e0b507fae36a"
