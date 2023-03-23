@@ -2,6 +2,8 @@
 
 This project is an implementation of a FastAPI application that receives firewall log messages from a Palo Alto Networks PAN-OS device, embedded within an Ansible EDA source plugin.
 
+This project started as a modification of the `alertmanager.py` source plugin from the Ansible EDA. The original source plugin can be found [here](https://github.dev/ansible/event-driven-ansible/blob/main/plugins/event_source/alertmanager.py).
+
 ## Project Setup
 
 ### Prerequisites
@@ -24,11 +26,11 @@ Build the Docker image using the command `invoke build`; macOS users on Apple si
 
 Run the container using the command `invoke local` (or `invoke local --arm` for Apple silicon).
 
-### Usage
+## Usage
 
 Once the Ansible rule book is up and running, you can send a firewall log message to the `/endpoint` endpoint using a POST request. The request should contain the firewall log message in JSON format.
 
-#### PAN-OS HTTP Server Profile
+### PAN-OS HTTP Server Profile
 
 You will need to structure your HTTP Server Profile to send the firewall log message to the Ansible rule book. The following example shows the configuration for a decryption log message:
 
@@ -59,7 +61,33 @@ You will need to structure your HTTP Server Profile to send the firewall log mes
 }
 ```
 
-#### Ansible Rulebook Execution
+### Ansible Rulebook
+
+Here is an example rule-book
+
+```yaml
+---
+- name: "Receive logs sourced from HTTP Server Profile in PAN-OS"
+  hosts: "localhost"
+
+  ## Define how our plugin should listen for logs from the PAN-OS firewall
+  sources:
+    - cdot65.panos.logs:
+        host: 0.0.0.0
+        port: 5000
+        type: decryption
+
+  ## Define the conditions we are looking for
+  rules:
+    - name: "Troubleshoot Decryption Failure"
+      condition: event.meta.log_type == "decryption"
+
+      ## Define the action we should take should the condition be met
+      action:
+        debug:
+```
+
+### example output
 
 Below is the console output of a healthy running rule-book.
 
