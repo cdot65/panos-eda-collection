@@ -1,0 +1,24 @@
+{
+    "category": "network",
+    "details": {
+        "action": "$action",
+        "app": "$app",
+        "cn": "$cn",
+        "dst": "$dst",
+        "device_name": "$device_name",
+        "error": "$error",
+        "issuer_cn": "$issuer_cn",
+        "root_cn": "$root_cn",
+        "root_status": "$root_status",
+        "sni": "$sni",
+        "src": "$src",
+        "srcuser": "$srcuser"
+    },
+    "receive_time": "$receive_time",
+    "rule": "$rule",
+    "rule_uuid": "$rule_uuid",
+    "serial": "$serial",
+    "sessionid": "$sessionid",
+    "severity": "informational",
+    "type": "decryption"
+}

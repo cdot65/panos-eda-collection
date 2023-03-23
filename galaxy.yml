@@ -1,6 +1,6 @@
 ---
 namespace: "cdot65"
-name: "panos_eda"
+name: "panos"
 version: "0.1.0"
 readme: "README.md"
 description: "Source plugin for PAN-OS firewalls"

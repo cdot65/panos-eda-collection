@@ -35,10 +35,10 @@ Run the source plugin from within our virtual environment.
 2023-03-22 12:53:51,098 - ansible_rulebook.app - INFO - Starting sources
 2023-03-22 12:53:51,099 - ansible_rulebook.app - INFO - Starting rules
 2023-03-22 12:53:51,099 - ansible_rulebook.engine - INFO - run_ruleset
-2023-03-22 12:53:52,367 - ansible_rulebook.engine - INFO - ruleset define: {"name": "Watch for new changelog entries", "hosts": ["localhost"], "sources": [{"EventSource": {"name": "cdot65.panos_eda.logs", "source_name": "cdot65.panos_eda.logs", "source_args": {"host": "0.0.0.0", "port": 5000}, "source_filters": []}}], "rules": [{"Rule": {"name": "New changelog created", "condition": {"AllCondition": [{"IsDefinedExpression": {"Event": "payload"}}]}, "actions": [{"Action": {"action": "debug", "action_args": {}}}], "enabled": true}}]}
+2023-03-22 12:53:52,367 - ansible_rulebook.engine - INFO - ruleset define: {"name": "Watch for new changelog entries", "hosts": ["localhost"], "sources": [{"EventSource": {"name": "cdot65.panos.logs", "source_name": "cdot65.panos.logs", "source_args": {"host": "0.0.0.0", "port": 5000}, "source_filters": []}}], "rules": [{"Rule": {"name": "New changelog created", "condition": {"AllCondition": [{"IsDefinedExpression": {"Event": "payload"}}]}, "actions": [{"Action": {"action": "debug", "action_args": {}}}], "enabled": true}}]}
 2023-03-22 12:53:52,389 - ansible_rulebook.engine - INFO - load source
 2023-03-22 12:53:53,365 - ansible_rulebook.engine - INFO - load source filters
-2023-03-22 12:53:53,365 - ansible_rulebook.engine - INFO - Calling main in cdot65.panos_eda.logs
+2023-03-22 12:53:53,365 - ansible_rulebook.engine - INFO - Calling main in cdot65.panos.logs
 2023-03-22 12:53:53,367 - ansible_rulebook.engine - INFO - Waiting for all ruleset tasks to end
 2023-03-22 12:53:53,367 - ansible_rulebook.rule_set_runner - INFO - Waiting for actions on events from Watch for new changelog entries
 2023-03-22 12:53:53,367 - ansible_rulebook.rule_set_runner - INFO - Waiting for events, ruleset: Watch for new changelog entries
