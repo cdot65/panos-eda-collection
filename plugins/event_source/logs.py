@@ -96,6 +96,13 @@ def process_payload(request, payload, log_type):
 
 
 async def main(queue: asyncio.Queue, args: Dict[str, Any], logger=None):
+    """
+    Main function to run the plugin as a standalone application.
+
+    :param queue: The event queue to forward incoming events to.
+    :param args: A dictionary containing configuration arguments.
+    :param logger: An optional custom logger.
+    """
     if logger is None:
         logger = logging.getLogger(__name__)
 
