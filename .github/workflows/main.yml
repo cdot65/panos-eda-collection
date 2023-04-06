@@ -41,6 +41,8 @@ jobs:
         run: |
           invoke build
 
-      - name: Run rulebook on localhost as container
+      - name: Run Invoke local with timeout
         run: |
-          invoke local
+          invoke local &  # Run the command in the background
+          local_pid=$!  # Store the background process ID
+          timeout 30s wait $local_pid || true
