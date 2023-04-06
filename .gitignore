@@ -120,5 +120,4 @@ venv.bak/
 creds.env
 
 # linting
-.flake8
 .yamllint.yml
