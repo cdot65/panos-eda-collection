@@ -8,3 +8,5 @@ aiokafka
 watchdog
 dpath
 aiobotocore
+pan-os-python
+xmltodict

@@ -1,5 +1,8 @@
 ---
 collections:
+  - name: paloaltonetworks.panos
+    version: ">=2.16.0,<3.0.0"
+    type: galaxy
   - name: "ansible.eda"
   - source: "."
     type: "dir"
