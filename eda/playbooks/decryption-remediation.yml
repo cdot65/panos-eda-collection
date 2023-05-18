@@ -1,0 +1,58 @@
+---
+- name: Decryption Remediation Playbook
+  hosts: 'all'
+  gather_facts: false
+  connection: local
+
+  vars:
+    device:
+      ip_address: "firewall.local"
+      username: "admin"
+      password: "secretword"
+
+    bypass_category_name: 'decyption-bypass'
+
+  ## When EDA calls this playbook for execution, it takes the SNI (Server Name Indication)
+  ## from the decryption logs where a site failed to be decrypted properly, and adds the
+  ## SNI to the list of domains in a URL category. This URL category is used as match
+  ## criteria, therefore domains in this URL category will no longer be decrypted by the
+  ## decryption policy rule.
+
+  tasks:
+    ## Gather up the list of domains currently in the URL category
+    - name: Get current decryption bypass domains
+      paloaltonetworks.panos.panos_custom_url_category:
+        provider: "{{ device }}"
+        state: "gathered"
+        gathered_filter: "name == '{{ bypass_category_name }}'"
+      register: bypass_category
+
+    ## If the URL category already has some domains, add this SNI to the list ('url_value')
+    - name: Update decryption bypass category with new domain, if category is currently not empty
+      paloaltonetworks.panos.panos_custom_url_category:
+        provider: '{{ device }}'
+        name: '{{ bypass_category_name }}'
+        url_value: '{{ bypass_category.gathered[0].url_value + [ansible_eda.event.payload.details.sni] }}'
+      when:
+        - bypass_category.gathered[0].url_value != None
+        - ansible_eda.event.payload.details.sni not in bypass_category.gathered[0].url_value
+
+    ## If the URL category is empty, create the list ('url_value') with this SNI
+    - name: Create decryption bypass category with new domain, if category is currently empty
+      paloaltonetworks.panos.panos_custom_url_category:
+        provider: '{{ device }}'
+        name: '{{ bypass_category_name }}'
+        url_value: '{{ [ansible_eda.event.payload.details.sni] }}'
+      when:
+        - bypass_category.gathered[0].url_value == None
+
+    ## Having added the site's SNI to the URL category, make this change live by performing a 'commit'
+    - name: Commit configuration
+      paloaltonetworks.panos.panos_commit_firewall:
+        provider: "{{ device }}"
+      register: results
+
+    ## Output results of the commit
+    - name: Output commit results
+      ansible.builtin.debug:
+        msg: "Commit with Job ID: {{ results.jobid }} had output: {{ results }}"
