@@ -9,11 +9,15 @@
         port: 5000
         type: decryption
 
-  ## Define the conditions we are looking for
+  ## Define the conditions we are looking for. There are many types of logs
+  ## in PAN-OS; we are looking just for decryption logs
   rules:
     - name: "Troubleshoot Decryption Failure"
       condition: event.meta.log_type == "decryption"
 
-      ## Define the action we should take should the condition be met
+      ## Define the action we should take should the condition be met,
+      ## when we find a decryption log, which is to execute the
+      ## remediation playbook
       action:
-        debug:
+        run_playbook:
+          name: "playbooks/decryption_remedation.yml"
